@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import React from 'react'
 import { IoBrowsersOutline, IoCalculator, IoFootball, IoHeartOutline, IoLogoReact } from 'react-icons/io5'
-import { SidebarMenuItem } from '.'
+import { SidebarMenuItem } from '..'
 
 const menuItems = [
     {

@@ -1,4 +1,4 @@
-import { PokemonGrid } from "@/pokemons/components";
+import { FavoritePokemons, PokemonGrid } from "@/pokemons/components";
 import Image from "next/image";
 
 
@@ -20,7 +20,7 @@ export default async function NamePage() {
     <div className="felx flex-col">
       <span className="text-5xl my-2">Pokemons Favoritos <small className="text-blue-500">Global State</small></span>
       
-      <PokemonGrid pokemons={[]} />
+      <FavoritePokemons />
       
     </div>
   );

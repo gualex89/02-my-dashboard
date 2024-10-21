@@ -1,11 +1,24 @@
+'use client'
+import { toggleFavorite } from "@/store/pokemons/pokemonsSlice";
 import Image from "next/image";
 import Link from "next/link"
 import { IoHeart, IoHeartOutline } from "react-icons/io5";
+import { useDispatch, useSelector } from "react-redux";
 
 
 export const PokemonCard = ({pokemon}) => {
 
   const {id, name} = pokemon;
+
+  const isFavorite = useSelector((state) => !!state.pokemonReducer[id])
+
+  const dispatch = useDispatch()
+
+  const onToggle = () => {
+    console.log('Hizo Click', pokemon)
+
+    dispatch(toggleFavorite(pokemon))
+  }   
 
   return (
 
@@ -33,18 +46,23 @@ export const PokemonCard = ({pokemon}) => {
           </div>
         </div>
         <div className="border-b">
-          <Link className="px-4 py-2 hover:bg-gray-100 flex items-center" href="/dashboard/main" >
+          <div className="px-4 py-2 hover:bg-gray-100 flex items-center cursor-pointer" onClick={onToggle} >
             <div className="text-red-600">
-              <IoHeartOutline />
+              {
+                isFavorite
+                ? <IoHeart />
+                : <IoHeartOutline />
+              }
+              
             </div>
             <div className="pl-3">
               <p className="text-sm font-medium text-gray-800 leading-none">
                 No es Favorito
               </p>
-              <p className="text-xs text-gray-500">View your campaigns</p>
+              <p className="text-xs text-gray-500">Click para cambiar</p>
             </div>
           
-          </Link>
+          </div>
           
         </div>
 

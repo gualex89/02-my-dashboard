@@ -9,7 +9,7 @@ const getPokemon= async (id) => {
       cache: 'force-cache', //TODO Cambiar esto
     })
       .then((response) => response.json())
-      console.log('Se cargó el pokemon', pokemon.name)
+      
 
       return pokemon
     

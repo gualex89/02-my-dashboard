@@ -1,13 +1,48 @@
 'use client'
-import React, { useState } from 'react'
+import { addOne, initCounterState, resetCount, substractOne } from '@/store/counter/counterSlice'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
-export const CartCounter = () => {
 
-    const [count, setcount] = useState(1)
+const getApiCounter = async () => {
+    const data = await fetch('/api/counter')
+        .then((response) => response.json())
+
+    
+    return data
+
+    
+}
+
+export const CartCounter = ({value}) => {
+
+    const count = useSelector((state)=> state.counterReducer.count)
+
+
+    const dispatch = useDispatch()
+
+    const handleIncrement = () => dispatch(addOne())
+    const handleDecrement = () => dispatch(substractOne())
+
+    /* useEffect(() => {
+      dispatch(initCounterState(value))
+    
+      
+    }, [dispatch, value]) */
+
+    // Este useEffect siguiente hace los mismo que el anterior, el anterior usa el store y el siguiente hace una RESTful Api //TODO: Ojo con esto 
+
+    useEffect(() => {
+      getApiCounter()
+        .then(({count}) => dispatch(initCounterState(count)))
+    
+     
+    }, [dispatch])
+    
+    
 
   
-    const handleIncrement = () => setcount(count+1)
-    const handleDecrement = () => setcount(count-1)
+    
 
     return (
         <>

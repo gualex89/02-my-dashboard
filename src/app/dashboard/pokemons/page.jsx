@@ -29,8 +29,10 @@ const getpokemons = async (limit = 20, offset = 0) => {
 export default async function NamePage() {
 
   const pokemons = await getpokemons(151);
+
   
-  console.log(pokemons)
+  
+  
 
   return (
     <div className="felx flex-col">

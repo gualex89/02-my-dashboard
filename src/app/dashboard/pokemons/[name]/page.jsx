@@ -8,7 +8,7 @@ const getPokemon= async (name) => {
 
   try {
     const pokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`, {
-      cache: 'force-cache', //TODO Cambiar esto
+      
 
       next: {
         revalidate: 60 * 60 * 24 //Un dia (cada dia se revalida la informacion)
@@ -16,7 +16,7 @@ const getPokemon= async (name) => {
 
     })
       .then((response) => response.json())
-      console.log('Se cargó el pokemon', pokemon.name)
+      
 
       return pokemon
     
