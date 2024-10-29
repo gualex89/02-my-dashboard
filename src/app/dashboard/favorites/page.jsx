@@ -1,5 +1,6 @@
 import { FavoritePokemons, PokemonGrid } from "@/pokemons/components";
 import Image from "next/image";
+import { IoHeartOutline } from "react-icons/io5";
 
 
 
@@ -22,6 +23,8 @@ export default async function NamePage() {
       
       <FavoritePokemons />
       
+      
     </div>
   );
 }
+
